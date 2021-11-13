@@ -6,7 +6,9 @@ export function decodeMorse(morseCode: string): string {
   
   const decodedWords: string[] = [];
   for (const word of words) {
-    const decodedWord = word.trim().split(' ').map(letter => MORSE_CODE[letter]).join('');
+    const unpaddedWord = word.trim();
+    const letters = unpaddedWord.split(' ');
+    const decodedWord = letters.map(letter => MORSE_CODE[letter]).join('');
     decodedWords.push(decodedWord);
   }
   
