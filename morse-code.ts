@@ -4,5 +4,11 @@ export function decodeMorse(morseCode: string): string {
   
   const words: string[] = morseCode.split(WORD_SEPARATOR);
   
-  return words.map(word => word.trim().split(' ').map(letter => MORSE_CODE[letter]).join('')).join(' ').trim();
+  const decodedWords: string[] = [];
+  for (const word of words) {
+    const decodedWord = word.trim().split(' ').map(letter => MORSE_CODE[letter]).join('');
+    decodedWords.push(decodedWord);
+  }
+  
+  return decodedWords.join(' ').trim();
 }
