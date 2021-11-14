@@ -23,7 +23,7 @@ class EncodedMessage {
 
     const decodedWords: string[] = [];
     for (const encodedWord of encodedWords) {
-      const decodedWord = this.decodeWord(encodedWord);
+      const decodedWord = this.decodeWord(encodedWord.encodedText);
       decodedWords.push(decodedWord);
     }
 
@@ -33,8 +33,15 @@ class EncodedMessage {
   }
 
 
-  private get encodedWords(): string[] {
-    return this.encodedText.split(EncodedMessage.WORD_SEPARATOR);
+  private get encodedWords(): EncodedWord[] {
+    const encodedWordsAsText: string[] = this.encodedText.split(EncodedMessage.WORD_SEPARATOR);
+    const encodedWords: EncodedWord[] = [];
+    
+    for (const encodedWordAsText of encodedWordsAsText) {
+      encodedWords.push(new EncodedWord(encodedWordAsText));
+    }
+    
+    return encodedWords;
   } 
 
 
@@ -67,4 +74,10 @@ class EncodedMessage {
 
     return unpaddedDecodedMessage;
   }
+}
+
+// =========================================================
+
+class EncodedWord {
+  constructor(public encodedText: string) {}
 }
