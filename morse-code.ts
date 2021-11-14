@@ -23,8 +23,8 @@ class EncodedMessage {
 
     const decodedWords: string[] = [];
     for (const encodedWord of encodedWords) {
-      const decodedWord: string = encodedWord.decodedText;
-      decodedWords.push(decodedWord);
+      const decodedWordAsText: string = encodedWord.decodedText;
+      decodedWords.push(decodedWordAsText);
     }
 
     const decodedMessage = this.makeDecodedMessage(decodedWords);
