@@ -59,7 +59,7 @@ class EncodedWord {
   static readonly LETTER_SEPARATOR: string = ' ';
   
   
-  constructor(public encodedText: string) {}
+  constructor(private encodedText: string) {}
   
   
   public get decodedText(): string {
