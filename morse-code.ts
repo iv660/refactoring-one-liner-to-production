@@ -1,4 +1,6 @@
 import { MORSE_CODE } from './preloaded';
+
+
 export function decodeMorse(morseCode: string): string {
   const WORD_SEPARATOR = '   ';
   const LETTER_SEPARATOR = ' ';
@@ -12,7 +14,8 @@ export function decodeMorse(morseCode: string): string {
     
     const decodedLetters: string[] = [];
     for (const letter of letters) {
-      decodedLetters.push(MORSE_CODE[letter]);
+      const decodedLetter = MORSE_CODE[letter];
+      decodedLetters.push(decodedLetter);
     }
     
     const decodedWord = decodedLetters.join('');
