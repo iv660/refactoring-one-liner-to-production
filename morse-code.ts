@@ -17,14 +17,11 @@ class EncodedMessage {
     
   }
   
-  public get decodedText(): string {
   
-    const encodedWords = this.encodedWords;
-
+  public get decodedText(): string {
     const decodedWords: string[] = [];
-    for (const encodedWord of encodedWords) {
-      const decodedWordAsText: string = encodedWord.decodedText;
-      decodedWords.push(decodedWordAsText);
+    for (const encodedWord of this.encodedWords) {
+      decodedWords.push(encodedWord.decodedText);
     }
 
     const decodedMessage = this.makeDecodedMessage(decodedWords);
