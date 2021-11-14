@@ -11,13 +11,15 @@ export function decodeMorse(morseCode: string): string {
 
 class EncodedMessage {
   
+  static readonly WORD_SEPARATOR: string = '   ';
+  
   constructor(private encodedText: string) {
     
   }
   
   public get decodedText(): string {
   
-    const encodedWords = this.breakIntoWords(this.encodedText);
+    const encodedWords = this.encodedWords;
 
     const decodedWords: string[] = [];
     for (const encodedWord of encodedWords) {
@@ -31,10 +33,8 @@ class EncodedMessage {
   }
 
 
-  private breakIntoWords(encodedMessage: string): string[] {
-    const WORD_SEPARATOR = '   ';
-
-    return encodedMessage.split(WORD_SEPARATOR);
+  private get encodedWords(): string[] {
+    return this.encodedText.split(EncodedMessage.WORD_SEPARATOR);
   } 
 
 
