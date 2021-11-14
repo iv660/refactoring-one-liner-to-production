@@ -23,5 +23,7 @@ export function decodeMorse(morseCode: string): string {
   }
   
   const decodedMessage = decodedWords.join(' ');
-  return decodedMessage.trim();
+  const unpaddedDecodedMessage = decodedMessage.trim();
+  
+  return unpaddedDecodedMessage;
 }
