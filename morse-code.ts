@@ -22,5 +22,6 @@ export function decodeMorse(morseCode: string): string {
     decodedWords.push(decodedWord);
   }
   
-  return decodedWords.join(' ').trim();
+  const decodedMessage = decodedWords.join(' ');
+  return decodedMessage.trim();
 }
