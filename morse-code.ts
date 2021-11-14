@@ -58,16 +58,14 @@ class EncodedMessage {
 class EncodedWord {
   static readonly LETTER_SEPARATOR: string = ' ';
   
+  
   constructor(public encodedText: string) {}
   
   
   public get decodedText(): string {
-    const unpaddedWord = this.encodedText.trim();
-    const encodedLetters = unpaddedWord.split(EncodedWord.LETTER_SEPARATOR);
-
     const decodedLetters: string[] = [];
-    for (const encodedLetter of encodedLetters) {
-      const decodedLetter = this.decodeLetter(encodedLetter);
+    for (const encodedLetter of this.encodedLetters) {
+      const decodedLetter = encodedLetter.decodedText;
       decodedLetters.push(decodedLetter);
     }
 
@@ -75,9 +73,29 @@ class EncodedWord {
 
     return decodedWord;
   }
+  
+  
+  private get encodedLetters(): EncodedLetter[] {
+    const unpaddedWord = this.encodedText.trim();
+    const encodedLettersAsText = unpaddedWord.split(EncodedWord.LETTER_SEPARATOR);
+    
+    const encodedLetters: EncodedLetter[] = [];
+    for (const encodedLetterAsText of encodedLettersAsText) {
+      const encodedLetter = new EncodedLetter(encodedLetterAsText);
+      encodedLetters.push(encodedLetter);
+    }
+    
+    return encodedLetters;
+  }
+}
 
+// =========================================================
 
-  private decodeLetter(encodedLetter: string): string {
-    return MORSE_CODE[encodedLetter];
+class EncodedLetter {
+  constructor(private encodedText: string) {}
+  
+  
+  public get decodedText(): string {
+    return MORSE_CODE[this.encodedText];
   }
 }
