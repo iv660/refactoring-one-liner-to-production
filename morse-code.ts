@@ -5,16 +5,16 @@ export function decodeMorse(morseCode: string): string {
   const WORD_SEPARATOR = '   ';
   const LETTER_SEPARATOR = ' ';
   
-  const words: string[] = morseCode.split(WORD_SEPARATOR);
+  const encodedWords: string[] = morseCode.split(WORD_SEPARATOR);
   
   const decodedWords: string[] = [];
-  for (const word of words) {
-    const unpaddedWord = word.trim();
-    const letters = unpaddedWord.split(LETTER_SEPARATOR);
+  for (const encodedWord of encodedWords) {
+    const unpaddedWord = encodedWord.trim();
+    const encodedLetters = unpaddedWord.split(LETTER_SEPARATOR);
     
     const decodedLetters: string[] = [];
-    for (const letter of letters) {
-      const decodedLetter = MORSE_CODE[letter];
+    for (const encodedLetter of encodedLetters) {
+      const decodedLetter = MORSE_CODE[encodedLetter];
       decodedLetters.push(decodedLetter);
     }
     
