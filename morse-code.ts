@@ -56,14 +56,14 @@ class EncodedMessage {
 // =========================================================
 
 class EncodedWord {
+  static readonly LETTER_SEPARATOR: string = ' ';
+  
   constructor(public encodedText: string) {}
   
   
   public get decodedText(): string {
-    const LETTER_SEPARATOR = ' ';
-
     const unpaddedWord = this.encodedText.trim();
-    const encodedLetters = unpaddedWord.split(LETTER_SEPARATOR);
+    const encodedLetters = unpaddedWord.split(EncodedWord.LETTER_SEPARATOR);
 
     const decodedLetters: string[] = [];
     for (const encodedLetter of encodedLetters) {
